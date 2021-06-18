@@ -20,7 +20,11 @@ function Modal(props) {
             </ul>
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-primary">
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={props.handleStart}
+            >
               OK
             </button>
           </div>
