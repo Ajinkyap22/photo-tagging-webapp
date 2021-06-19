@@ -2,15 +2,11 @@ import "./App.css";
 import main from "./images/main.jpg";
 import Navbar from "./Components/nav";
 import Modal from "./Components/modal";
+import StartModal from "./Components/startModal";
 import { useState } from "react";
 
-// Create navbar
-// Rest of the container with main pic
-// A unique cursor
-// A menu on clicking
-
 function App() {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [start, setStart] = useState(false);
 
   function displayModal() {
@@ -35,7 +31,9 @@ function App() {
         closeModal={closeModal}
         handleStart={handleStart}
         show={show}
+        start={start}
       ></Modal>
+      <StartModal start={start} handleStart={handleStart}></StartModal>
     </div>
   );
 }
