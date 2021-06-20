@@ -1,5 +1,7 @@
 import "./App.css";
-import main from "./images/main.jpg";
+import levelOne from "./images/level-1.jpg";
+import levelTwo from "./images/level-3.jpg";
+import levelThree from "./images/level-3.jpg";
 import Navbar from "./Components/nav";
 import Modal from "./Components/modal";
 import StartModal from "./Components/startModal";
@@ -25,7 +27,7 @@ function App() {
     <div className="App" onClick={show ? closeModal : null}>
       <Navbar start={start} displayModal={displayModal}></Navbar>
       <div className="container-fluid px-0">
-        <img src={main} alt="" className="img-fluid w-100" />
+        <img src={levelOne} alt="" className="img-fluid w-100" />
       </div>
       <Modal
         closeModal={closeModal}

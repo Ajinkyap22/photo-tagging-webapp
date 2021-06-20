@@ -16,7 +16,7 @@ function Timer(props) {
   }, [props.start]);
 
   return (
-    <div className="navbar-brand">
+    <div className="text-light lead">
       {Math.floor((time / 3600) % 60)
         .toString()
         .padStart(2, "0") +

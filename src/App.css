@@ -1,9 +1,3 @@
-body::before {
-  display: block;
-  content: "";
-  height: 4rem;
-}
-
 .App {
   text-align: center;
 }
