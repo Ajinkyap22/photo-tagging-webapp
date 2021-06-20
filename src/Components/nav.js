@@ -8,20 +8,20 @@ function Nav(props) {
         <h2 className="navbar-brand">Where's That Pokemon?</h2>
 
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navmenu"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navmenu">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item px-3 pt-1">
+        <div className="collapse navbar-collapse" id="navmenu">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item px-3 pt-1">
               <Timer start={props.start}></Timer>
             </li>
-            <li class="nav-item px-1">
+            <li className="nav-item px-1">
               <button className="btn btn-light" onClick={props.displayModal}>
                 Pokemon
               </button>

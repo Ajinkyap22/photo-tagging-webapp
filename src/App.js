@@ -1,6 +1,6 @@
 import "./App.css";
 import levelOne from "./images/level-1.jpg";
-import levelTwo from "./images/level-3.jpg";
+import levelTwo from "./images/level-2.jpg";
 import levelThree from "./images/level-3.jpg";
 import Navbar from "./Components/nav";
 import Modal from "./Components/modal";
@@ -10,6 +10,8 @@ import { useState } from "react";
 function App() {
   const [show, setShow] = useState(false);
   const [start, setStart] = useState(false);
+  const [level, setLevel] = useState(1);
+  const [background, setBackground] = useState(levelOne);
 
   function displayModal() {
     setShow(true);
@@ -21,13 +23,27 @@ function App() {
 
   function handleStart() {
     setStart(true);
+    displayModal();
+  }
+
+  function changeLevel(level) {
+    setLevel(level);
+    setBackground(() => {
+      if (level === 1) {
+        return levelOne;
+      } else if (level === 2) {
+        return levelTwo;
+      } else {
+        return levelThree;
+      }
+    });
   }
 
   return (
     <div className="App" onClick={show ? closeModal : null}>
       <Navbar start={start} displayModal={displayModal}></Navbar>
       <div className="container-fluid px-0">
-        <img src={levelOne} alt="" className="img-fluid w-100" />
+        <img src={background} alt="" className="img-fluid w-100" />
       </div>
       <Modal
         closeModal={closeModal}
@@ -35,7 +51,11 @@ function App() {
         show={show}
         start={start}
       ></Modal>
-      <StartModal start={start} handleStart={handleStart}></StartModal>
+      <StartModal
+        start={start}
+        changeLevel={changeLevel}
+        handleStart={handleStart}
+      ></StartModal>
     </div>
   );
 }

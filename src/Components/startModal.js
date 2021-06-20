@@ -1,20 +1,35 @@
 function StartModal(props) {
   return (
-    <div
-      className={props.start ? "modal fade" : "modal fade show"}
-      tabIndex="-1"
-    >
+    <div className={props.start ? "modal" : "modal show"} tabIndex="-1">
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Pokemon To Find</h5>
+            <h5 className="modal-title">Select a Level</h5>
           </div>
           <div className="modal-body">
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">Pokemon 1</li>
-              <li className="list-group-item">Pokemon 2</li>
-              <li className="list-group-item">Pokemon 3</li>
-            </ul>
+            <div className="btn-group-vertical w-100">
+              <button
+                type="button"
+                className="btn btn-primary mb-2"
+                onClick={props.changeLevel.bind(null, 1)}
+              >
+                Level 1
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary mb-2"
+                onClick={props.changeLevel.bind(null, 2)}
+              >
+                Level 2
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary mb-2"
+                onClick={props.changeLevel.bind(null, 3)}
+              >
+                Level 3
+              </button>
+            </div>
           </div>
           <div className="modal-footer">
             <button
