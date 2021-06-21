@@ -41,7 +41,7 @@ function App() {
 
   return (
     <div className="App" onClick={show ? closeModal : null}>
-      <Navbar start={start} displayModal={displayModal}></Navbar>
+      <Navbar start={start} show={show} displayModal={displayModal}></Navbar>
       <div className="container-fluid px-0">
         <img src={background} alt="" className="img-fluid w-100" />
       </div>

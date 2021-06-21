@@ -19,7 +19,7 @@ function Nav(props) {
         <div className="collapse navbar-collapse" id="navmenu">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item px-3 py-1">
-              <Timer start={props.start}></Timer>
+              <Timer start={props.start} show={props.show}></Timer>
             </li>
             <li className="nav-item px-1">
               <button className="btn btn-light" onClick={props.displayModal}>
