@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  position: relative;
 }
 
 .show {
@@ -7,6 +8,10 @@
 }
 
 .overlay {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
   z-index: 5;

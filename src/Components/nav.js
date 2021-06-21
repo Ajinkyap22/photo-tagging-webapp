@@ -18,7 +18,7 @@ function Nav(props) {
 
         <div className="collapse navbar-collapse" id="navmenu">
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item px-3 pt-1">
+            <li className="nav-item px-3 py-1">
               <Timer start={props.start}></Timer>
             </li>
             <li className="nav-item px-1">

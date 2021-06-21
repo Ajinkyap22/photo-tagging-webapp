@@ -56,6 +56,7 @@ function App() {
         changeLevel={changeLevel}
         handleStart={handleStart}
       ></StartModal>
+      <div className="overlay" hidden={start && !show ? true : false}></div>
     </div>
   );
 }

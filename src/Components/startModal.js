@@ -10,21 +10,21 @@ function StartModal(props) {
             <div className="btn-group-vertical w-100">
               <button
                 type="button"
-                className="btn btn-primary mb-2"
+                className="btn btn-success mb-2"
                 onClick={props.changeLevel.bind(null, 1)}
               >
                 Level 1
               </button>
               <button
                 type="button"
-                className="btn btn-primary mb-2"
+                className="btn btn-warning mb-2"
                 onClick={props.changeLevel.bind(null, 2)}
               >
                 Level 2
               </button>
               <button
                 type="button"
-                className="btn btn-primary mb-2"
+                className="btn btn-danger mb-2"
                 onClick={props.changeLevel.bind(null, 3)}
               >
                 Level 3
