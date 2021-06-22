@@ -1,8 +1,43 @@
 import snubbull from "../images/Level-1/snubbull.png";
 import heatmor from "../images/Level-1/heatmor.png";
 import shroomish from "../images/Level-1/shroomish.png";
+import bruxish from "../images/Level-2/bruxish.png";
+import kricketot from "../images/Level-2/kricketot.png";
+import combee from "../images/Level-2/combee.png";
+import { useEffect, useState } from "react";
 
 function Modal(props) {
+  const [pokemon, setPokemon] = useState({
+    easy: ["Snubbull", snubbull],
+    medium: ["Heatmor", heatmor],
+    hard: ["Shroomish", shroomish],
+  });
+
+  useEffect(() => {
+    if (props.level === 1) {
+      const set = {
+        easy: ["Snubbull", snubbull],
+        medium: ["Heatmor", heatmor],
+        hard: ["Shroomish", shroomish],
+      };
+
+      setPokemon(set);
+    }
+
+    if (props.level === 2) {
+      const set = {
+        easy: ["Bruxish", bruxish],
+        medium: ["Kricketot", kricketot],
+        hard: ["Combee", combee],
+      };
+
+      setPokemon(set);
+    }
+
+    if (props.level === 3) {
+    }
+  }, [props.level]);
+
   return (
     <div className={props.show ? "modal show" : "modal"} tabIndex="-1">
       <div className="modal-dialog modal-dialog-centered">
@@ -22,33 +57,45 @@ function Modal(props) {
               <li className="list-group-item ">
                 <div className="row">
                   <div className="col">
-                    <img src={snubbull} alt="" className="img-fluid w-50" />
+                    <img
+                      src={pokemon.easy[1]}
+                      alt=""
+                      className="img-fluid w-50"
+                    />
                   </div>
                   <div className="col g-4">
-                    <div>Pokemon 1</div>
-                    <div>Easy</div>
+                    <div className="lead">{pokemon.easy[0]}</div>
+                    <div className="text-success fw-bold">Easy</div>
+                  </div>
+                </div>
+              </li>
+              <li className="list-group-item">
+                <div className="row">
+                  <div className="col py-2">
+                    <img
+                      src={pokemon.medium[1]}
+                      alt=""
+                      className="img-fluid w-50"
+                    />
+                  </div>
+                  <div className="col g-4">
+                    <div className="lead">{pokemon.medium[0]}</div>
+                    <div className="text-warning fw-bold">Medium</div>
                   </div>
                 </div>
               </li>
               <li className="list-group-item">
                 <div className="row">
                   <div className="col">
-                    <img src={heatmor} alt="" className="img-fluid w-50 py-2" />
+                    <img
+                      src={pokemon.hard[1]}
+                      alt=""
+                      className="img-fluid w-50"
+                    />
                   </div>
                   <div className="col g-4">
-                    <div>Pokemon 2</div>
-                    <div>Medium</div>
-                  </div>
-                </div>
-              </li>
-              <li className="list-group-item">
-                <div className="row">
-                  <div className="col">
-                    <img src={shroomish} alt="" className="img-fluid w-50" />
-                  </div>
-                  <div className="col g-4">
-                    <div>Pokemon 3</div>
-                    <div>Hard</div>
+                    <div className="lead">{pokemon.hard[0]}</div>
+                    <div className="text-danger fw-bold">Hard</div>
                   </div>
                 </div>
               </li>

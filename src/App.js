@@ -50,6 +50,7 @@ function App() {
         handleStart={handleStart}
         show={show}
         start={start}
+        level={level}
       ></Modal>
       <StartModal
         start={start}
