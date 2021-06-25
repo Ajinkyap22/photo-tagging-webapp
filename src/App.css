@@ -3,6 +3,10 @@
   position: relative;
 }
 
+.container-fluid {
+  cursor: url("./images/custom-cursor.svg") 50 50, auto;
+}
+
 .show {
   display: block !important;
 }

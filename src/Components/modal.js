@@ -4,6 +4,9 @@ import shroomish from "../images/Level-1/shroomish.png";
 import bruxish from "../images/Level-2/bruxish.png";
 import kricketot from "../images/Level-2/kricketot.png";
 import combee from "../images/Level-2/combee.png";
+import charjabug from "../images/Level-3/charjabug.png";
+import litwick from "../images/Level-3/litwick.png";
+import sewaddle from "../images/Level-3/sewaddle.png";
 import { useEffect, useState } from "react";
 
 function Modal(props) {
@@ -35,6 +38,13 @@ function Modal(props) {
     }
 
     if (props.level === 3) {
+      const set = {
+        easy: ["Charjabug", charjabug],
+        medium: ["Litwick", litwick],
+        hard: ["Sewaddle", sewaddle],
+      };
+
+      setPokemon(set);
     }
   }, [props.level]);
 
