@@ -20,3 +20,19 @@
   backdrop-filter: blur(3px);
   z-index: 5;
 }
+
+.link-danger:link {
+  text-decoration: none !important;
+}
+
+.link-danger:visited {
+  text-decoration: none !important;
+}
+
+.link-danger:hover {
+  text-decoration: none !important;
+}
+
+.link-danger:active {
+  text-decoration: none !important;
+}

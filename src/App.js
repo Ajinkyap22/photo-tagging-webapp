@@ -6,6 +6,7 @@ import Navbar from "./Components/nav";
 import Modal from "./Components/modal";
 import StartModal from "./Components/startModal";
 import GameImage from "./Components/gameImage";
+import Footer from "./Components/footer";
 import { useState } from "react";
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
         handleStart={handleStart}
       ></StartModal>
       <div className="overlay" hidden={start && !show ? true : false}></div>
+      <Footer></Footer>
     </div>
   );
 }

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import CharMenu from "./charMenu";
+import { useEffect, useRef, useState } from "react";
+import ContextMenu from "./contextMenu";
 
 function GameImage(props) {
   const [xPos, setXPos] = useState("0px");
@@ -7,12 +7,19 @@ function GameImage(props) {
   const [showMenu, setShowMenu] = useState(false);
   const [names, setNames] = useState(["Snubbull", "Heatmor", "Shroomish"]);
 
-  const handleMenu = (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
 
     setXPos(`${e.pageX}px`);
     setYPos(`${e.pageY}px`);
     setShowMenu(!showMenu);
+  };
+
+  const imgRef = useRef();
+
+  const handleMenu = (x, y) => {
+    const width = imgRef.current.offsetWidth;
+    const height = imgRef.current.offsetHeight;
   };
 
   useEffect(() => {
@@ -30,19 +37,20 @@ function GameImage(props) {
   }, [props.level]);
 
   return (
-    <div>
+    <div ref={imgRef}>
       <img
         src={props.background}
         alt=""
         className="img-fluid w-100"
-        onClick={handleMenu}
+        onClick={handleClick}
       />
-      <CharMenu
+      <ContextMenu
         xPos={xPos}
         yPos={yPos}
         showMenu={showMenu}
         names={names}
-      ></CharMenu>
+        handleMenu={handleMenu}
+      ></ContextMenu>
     </div>
   );
 }
