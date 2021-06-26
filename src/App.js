@@ -5,6 +5,7 @@ import levelThree from "./images/level-3.jpg";
 import Navbar from "./Components/nav";
 import Modal from "./Components/modal";
 import StartModal from "./Components/startModal";
+import GameImage from "./Components/gameImage";
 import { useState } from "react";
 
 function App() {
@@ -42,13 +43,8 @@ function App() {
   return (
     <div className="App" onClick={show ? closeModal : null}>
       <Navbar start={start} show={show} displayModal={displayModal}></Navbar>
-      <div
-        className="container-fluid px-0"
-        data-bs-container="body"
-        data-bs-toggle="popover"
-        data-bs-content="Popover"
-      >
-        <img src={background} alt="" className="img-fluid w-100" />
+      <div className="container-fluid px-0" data-bs-container="body">
+        <GameImage background={background} level={level}></GameImage>
       </div>
       <Modal
         closeModal={closeModal}
