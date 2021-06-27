@@ -1,9 +1,13 @@
 function ContextMenu(props) {
   return (
     <div
-      className="btn-group-vertical btn-group-lg p-3"
+      className="btn-group-vertical btn-group-md p-3"
       hidden={props.showMenu ? false : true}
-      style={{ position: "absolute", top: props.yPos, left: props.xPos }}
+      style={{
+        position: "absolute",
+        top: `${props.yPos}px`,
+        left: `${props.xPos}px`,
+      }}
     >
       <button
         type="button"
