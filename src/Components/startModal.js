@@ -1,44 +1,37 @@
+import Levels from "./levels";
+import SignIn from "./signIn";
+
 function StartModal(props) {
   return (
     <div className={props.start ? "modal" : "modal show"} tabIndex="-1">
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Select a Level</h5>
+            <h5 className="modal-title">
+              {props.user ? "Select a Level" : "Sign in To Continue"}
+            </h5>
           </div>
           <div className="modal-body">
-            <div className="btn-group-vertical w-100">
-              <button
-                type="button"
-                className="btn btn-success mb-2"
-                onClick={props.changeLevel.bind(null, 1)}
-              >
-                Level 1
-              </button>
-              <button
-                type="button"
-                className="btn btn-warning mb-2"
-                onClick={props.changeLevel.bind(null, 2)}
-              >
-                Level 2
-              </button>
-              <button
-                type="button"
-                className="btn btn-danger mb-2"
-                onClick={props.changeLevel.bind(null, 3)}
-              >
-                Level 3
-              </button>
-            </div>
+            {props.user ? (
+              <Levels changeLevel={props.changeLevel}></Levels>
+            ) : (
+              <SignIn></SignIn>
+            )}
           </div>
           <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={props.handleStart}
-            >
-              Start
-            </button>
+            {props.user ? (
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={props.handleStart}
+              >
+                Start
+              </button>
+            ) : (
+              <p>
+                Sign in to keep your progress saved & record your highscore.
+              </p>
+            )}
           </div>
         </div>
       </div>

@@ -18,12 +18,20 @@ function Nav(props) {
 
         <div className="collapse navbar-collapse" id="navmenu">
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item px-3 py-1">
+            <li className="nav-item px-2 py-1">
               <Timer start={props.start} show={props.show}></Timer>
             </li>
-            <li className="nav-item px-1">
+            <li className="nav-item px-2 py-2 py-md-0">
               <button className="btn btn-light" onClick={props.displayModal}>
                 Pokemon
+              </button>
+            </li>
+            <li
+              className="nav-item px-2 py-2 py-md-0"
+              hidden={props.user ? false : true}
+            >
+              <button className="btn btn-secondary" onClick={props.signOut}>
+                Sign Out
               </button>
             </li>
           </ul>

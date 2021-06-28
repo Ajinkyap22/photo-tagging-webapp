@@ -15,7 +15,6 @@ import Modal from "./Components/modal";
 import StartModal from "./Components/startModal";
 import GameImage from "./Components/gameImage";
 import Footer from "./Components/footer";
-import Authorize from "./Components/authorize";
 
 // firebase imports
 import { firebase, auth, firestore } from "./firebase/config";
@@ -25,9 +24,13 @@ function App() {
   const [start, setStart] = useState(false);
   const [level, setLevel] = useState(1);
   const [background, setBackground] = useState(levelOne);
-  const [signedIn, setSignedIn] = useState(false);
 
   const [user] = useAuthState(auth);
+
+  function signOut() {
+    auth.signOut();
+    setStart(false);
+  }
 
   function displayModal() {
     setShow(true);
@@ -57,7 +60,13 @@ function App() {
 
   return (
     <div className="App" onClick={show ? closeModal : null}>
-      <Navbar start={start} show={show} displayModal={displayModal}></Navbar>
+      <Navbar
+        start={start}
+        show={show}
+        displayModal={displayModal}
+        user={user}
+        signOut={signOut}
+      ></Navbar>
 
       <div className="container-fluid px-0">
         <GameImage background={background} level={level}></GameImage>
@@ -71,15 +80,12 @@ function App() {
         level={level}
       ></Modal>
 
-      {user ? (
-        <StartModal
-          start={start}
-          changeLevel={changeLevel}
-          handleStart={handleStart}
-        ></StartModal>
-      ) : (
-        <Authorize signedIn={signedIn}></Authorize>
-      )}
+      <StartModal
+        start={start}
+        changeLevel={changeLevel}
+        handleStart={handleStart}
+        user={user}
+      ></StartModal>
 
       <div className="overlay" hidden={start && !show ? true : false}></div>
 
