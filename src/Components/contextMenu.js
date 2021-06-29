@@ -12,21 +12,21 @@ function ContextMenu(props) {
       <button
         type="button"
         className="btn btn-dark"
-        onClick={props.handleMenu.bind(this, props.xPos, props.yPos)}
+        onClick={props.handleMenu.bind(this, props.xPos, props.yPos, "easy")}
       >
         {props.names[0]}
       </button>
       <button
         type="button"
         className="btn btn-dark"
-        onClick={props.handleMenu.bind(this, props.xPos, props.yPos)}
+        onClick={props.handleMenu.bind(this, props.xPos, props.yPos, "medium")}
       >
         {props.names[1]}
       </button>
       <button
         type="button"
         className="btn btn-dark"
-        onClick={props.handleMenu.bind(this, props.xPos, props.yPos)}
+        onClick={props.handleMenu.bind(this, props.xPos, props.yPos, "hard")}
       >
         {props.names[2]}
       </button>
