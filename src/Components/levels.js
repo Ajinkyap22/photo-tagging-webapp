@@ -14,7 +14,7 @@ function Levels(props) {
         onClick={props.changeLevel.bind(null, 2)}
         disabled
       >
-        Level 2
+        Level 2 <i className="bi bi-lock-fill"></i>
       </button>
       <button
         type="button"
@@ -22,7 +22,7 @@ function Levels(props) {
         onClick={props.changeLevel.bind(null, 3)}
         disabled
       >
-        Level 3
+        Level 3 <i className="bi bi-lock-fill"></i>
       </button>
     </div>
   );

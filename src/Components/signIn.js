@@ -8,8 +8,13 @@ function SignIn(props) {
 
   return (
     <div>
-      <button className="btn btn-primary" onClick={signIn}>
-        Sign in With Google
+      <button
+        style={{ backgroundColor: "#db4a39" }}
+        className="btn text-light"
+        onClick={signIn}
+      >
+        <i className="bi bi-google"></i>
+        &nbsp;Sign in With Google
       </button>
     </div>
   );
