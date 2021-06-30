@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ContextMenu from "./contextMenu";
+import Notification from "./notification";
 import { firebase, firestore } from "../firebase/config";
 
 function GameImage(props) {
@@ -7,6 +8,12 @@ function GameImage(props) {
   const [yPos, setYPos] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
   const [names, setNames] = useState(["Snubbull", "Heatmor", "Shroomish"]);
+  const [correct, setCorrect] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  const hideToast = () => {
+    setShowToast(false);
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -39,7 +46,9 @@ function GameImage(props) {
     // Check if there's any relY coord matching user selected relX coord
     const userY = Math.abs(relY - coords[id].relY) < 0.02;
 
-    console.log(userX, userY);
+    userX && userY ? setCorrect(true) : setCorrect(false);
+
+    setShowToast(true);
   };
 
   useEffect(() => {
@@ -71,6 +80,11 @@ function GameImage(props) {
         names={names}
         handleMenu={handleMenu}
       ></ContextMenu>
+      <Notification
+        correct={correct}
+        hideToast={hideToast}
+        showToast={showToast}
+      ></Notification>
     </div>
   );
 }

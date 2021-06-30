@@ -59,7 +59,7 @@ function App() {
   }
 
   return (
-    <div className="App" onClick={show ? closeModal : null}>
+    <div className="App " onClick={show ? closeModal : null}>
       <Navbar
         start={start}
         show={show}
