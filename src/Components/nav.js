@@ -3,7 +3,7 @@ import Timer from "./timer";
 
 function Nav(props) {
   return (
-    <nav className="navbar navbar-expand-md bg-dark navbar-dark py-3">
+    <nav className="navbar navbar-expand-md bg-dark navbar-dark py-3 fixed-top">
       <div className="container">
         <h2 className="navbar-brand">Where's That Pokemon?</h2>
 

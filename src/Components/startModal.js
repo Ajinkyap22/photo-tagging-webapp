@@ -2,6 +2,7 @@ import Levels from "./levels";
 import SignIn from "./signIn";
 
 function StartModal(props) {
+  // wait for 2 seconds before checking if user exists then display modal
   return (
     <div className={props.start ? "modal" : "modal show"} tabIndex="-1">
       <div className="modal-dialog modal-dialog-centered">

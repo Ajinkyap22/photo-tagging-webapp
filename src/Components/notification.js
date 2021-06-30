@@ -1,6 +1,9 @@
 function Notification(props) {
   return (
-    <div className="position-fixed top-0 start-50 translate-middle-x">
+    <div
+      className="position-fixed start-50 translate-middle-x"
+      style={{ top: "15%", maxWidth: "300px" }}
+    >
       <div
         className={`toast show align-items-center text-white border-0 ${
           props.correct ? "bg-success" : "bg-danger"
@@ -11,7 +14,7 @@ function Notification(props) {
         hidden={props.showToast ? false : true}
       >
         <div className="d-flex">
-          <div className="toast-body text-center">
+          <div className="toast-body text-center flex-grow-1">
             {props.correct
               ? "Gotcha! You found a Pokemon."
               : "Wrong! Keep Looking."}

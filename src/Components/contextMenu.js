@@ -13,6 +13,7 @@ function ContextMenu(props) {
         type="button"
         className="btn btn-dark"
         onClick={props.handleMenu.bind(this, props.xPos, props.yPos, "easy")}
+        hidden={props.progress.easy ? true : false}
       >
         {props.names[0]}
       </button>
@@ -20,6 +21,7 @@ function ContextMenu(props) {
         type="button"
         className="btn btn-dark"
         onClick={props.handleMenu.bind(this, props.xPos, props.yPos, "medium")}
+        hidden={props.progress.medium ? true : false}
       >
         {props.names[1]}
       </button>
@@ -27,6 +29,7 @@ function ContextMenu(props) {
         type="button"
         className="btn btn-dark"
         onClick={props.handleMenu.bind(this, props.xPos, props.yPos, "hard")}
+        hidden={props.progress.hard ? true : false}
       >
         {props.names[2]}
       </button>

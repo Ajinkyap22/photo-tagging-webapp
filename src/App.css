@@ -6,6 +6,7 @@
 
 .container-fluid {
   cursor: url("./images/custom-cursor.svg") 50 50, auto;
+  padding-top: 4.5rem;
 }
 
 .show {

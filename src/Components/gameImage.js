@@ -10,6 +10,11 @@ function GameImage(props) {
   const [names, setNames] = useState(["Snubbull", "Heatmor", "Shroomish"]);
   const [correct, setCorrect] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [progress, setProgress] = useState({
+    easy: false,
+    medium: false,
+    hard: false,
+  });
 
   const hideToast = () => {
     setShowToast(false);
@@ -22,6 +27,13 @@ function GameImage(props) {
     setYPos(e.pageY);
     setShowMenu(!showMenu);
   };
+
+  useEffect(() => {
+    if (!showToast) return;
+
+    // hide notification after 3 seconds
+    setTimeout(() => setShowToast(false), 3000);
+  }, [showToast]);
 
   const imgRef = useRef();
 
@@ -46,9 +58,20 @@ function GameImage(props) {
     // Check if there's any relY coord matching user selected relX coord
     const userY = Math.abs(relY - coords[id].relY) < 0.02;
 
-    userX && userY ? setCorrect(true) : setCorrect(false);
+    if (userX && userY) {
+      setCorrect(true);
+
+      // remove the found pokemon from context menu
+      setProgress({
+        ...progress,
+        [id]: true,
+      });
+    } else {
+      setCorrect(false);
+    }
 
     setShowToast(true);
+    setShowMenu(false);
   };
 
   useEffect(() => {
@@ -79,6 +102,7 @@ function GameImage(props) {
         showMenu={showMenu}
         names={names}
         handleMenu={handleMenu}
+        progress={progress}
       ></ContextMenu>
       <Notification
         correct={correct}
