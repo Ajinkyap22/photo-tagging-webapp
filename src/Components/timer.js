@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 function Timer(props) {
   const [time, setTime] = useState(0);
 
-  // useEffect(() => {
-  //   let interval;
+  useEffect(() => {
+    let interval;
 
-  //   if (props.start) {
-  //     interval = setInterval(() => {
-  //       setTime((time) => time + 1);
-  //     }, 1000);
-  //   } else {
-  //     clearInterval(interval);
-  //   }
-  // }, [props.start]);
+    if (props.start && !props.win) {
+      interval = setInterval(() => {
+        setTime((time) => time + 1);
+      }, 1000);
+    } else {
+      clearInterval(interval);
+    }
+  }, [props.start, props.win]);
 
   return (
     <div className="text-light lead">

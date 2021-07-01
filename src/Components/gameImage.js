@@ -33,7 +33,15 @@ function GameImage(props) {
 
     // hide notification after 3 seconds
     setTimeout(() => setShowToast(false), 3000);
-  }, [showToast]);
+
+    // check for win
+    const result = Object.values(progress);
+    const won = result.every((result) => result);
+
+    if (won) {
+      props.setWin(true);
+    }
+  }, [showToast, progress, props]);
 
   const imgRef = useRef();
 
@@ -58,6 +66,8 @@ function GameImage(props) {
     // Check if there's any relY coord matching user selected relX coord
     const userY = Math.abs(relY - coords[id].relY) < 0.02;
 
+    setShowMenu(false);
+
     if (userX && userY) {
       setCorrect(true);
 
@@ -71,7 +81,6 @@ function GameImage(props) {
     }
 
     setShowToast(true);
-    setShowMenu(false);
   };
 
   useEffect(() => {
