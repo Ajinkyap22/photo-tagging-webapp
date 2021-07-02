@@ -1,7 +1,7 @@
 function ContextMenu(props) {
   return (
     <div
-      className="btn-group-vertical btn-group-md p-3"
+      className="btn-group-vertical btn-group-md p-3 menu"
       hidden={props.showMenu ? false : true}
       style={{
         position: "absolute",

@@ -23,8 +23,19 @@ function GameImage(props) {
   const handleClick = (e) => {
     e.preventDefault();
 
-    setXPos(e.pageX);
-    setYPos(e.pageY);
+    // To prevent the menu from going outside the screen width/height
+    if (imgRef.current.offsetWidth - e.pageX < 144) {
+      setXPos(e.pageX - 144);
+    } else {
+      setXPos(e.pageX);
+    }
+
+    if (imgRef.current.offsetHeight - e.pageY < 143) {
+      setYPos(e.pageY - 143);
+    } else {
+      setYPos(e.pageY);
+    }
+
     setShowMenu(!showMenu);
   };
 

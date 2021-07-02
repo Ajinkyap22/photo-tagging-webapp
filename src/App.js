@@ -67,6 +67,10 @@ function App() {
     endGame();
   }
 
+  function getUserData() {
+    const userName = auth.currentUser.displayName;
+  }
+
   return (
     <div className="App" onClick={show ? closeModal : null}>
       <Navbar
