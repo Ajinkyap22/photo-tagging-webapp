@@ -40,6 +40,7 @@ function GameImage(props) {
 
     if (won) {
       props.setWin(true);
+      setProgress({ easy: false, medium: false, hard: false });
     }
   }, [showToast, progress, props]);
 
@@ -105,6 +106,7 @@ function GameImage(props) {
         className="img-fluid w-100"
         onClick={handleClick}
       />
+
       <ContextMenu
         xPos={xPos}
         yPos={yPos}
@@ -113,6 +115,7 @@ function GameImage(props) {
         handleMenu={handleMenu}
         progress={progress}
       ></ContextMenu>
+
       <Notification
         correct={correct}
         hideToast={hideToast}

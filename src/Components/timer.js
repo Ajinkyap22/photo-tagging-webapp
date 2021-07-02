@@ -1,31 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function Timer(props) {
-  const [time, setTime] = useState(0);
-
   useEffect(() => {
     let interval;
 
     if (props.start && !props.win) {
       interval = setInterval(() => {
-        setTime((time) => time + 1);
+        props.setTime((time) => time + 1);
       }, 1000);
     } else {
       clearInterval(interval);
     }
-  }, [props.start, props.win]);
+
+    return () => clearInterval(interval);
+  }, [props]);
 
   return (
     <div className="text-light lead">
-      {Math.floor((time / 3600) % 60)
+      {Math.floor((props.time / 3600) % 60)
         .toString()
         .padStart(2, "0") +
         ":" +
-        Math.floor((time / 60) % 60)
+        Math.floor((props.time / 60) % 60)
           .toString()
           .padStart(2, "0") +
         ":" +
-        Math.floor(time % 60)
+        Math.floor(props.time % 60)
           .toString()
           .padStart(2, "0")}
     </div>

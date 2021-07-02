@@ -7,6 +7,7 @@ function ContextMenu(props) {
         position: "absolute",
         top: `${props.yPos}px`,
         left: `${props.xPos}px`,
+        zIndex: 1040,
       }}
     >
       <button

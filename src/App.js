@@ -26,13 +26,9 @@ function App() {
   const [level, setLevel] = useState(1);
   const [background, setBackground] = useState(levelOne);
   const [win, setWin] = useState(false);
+  const [time, setTime] = useState(0);
 
   const [user] = useAuthState(auth);
-
-  function signOut() {
-    auth.signOut();
-    setStart(false);
-  }
 
   function displayModal() {
     setShow(true);
@@ -60,6 +56,17 @@ function App() {
     });
   }
 
+  function endGame() {
+    setStart(false);
+    setWin(false);
+    setTime(0);
+  }
+
+  function signOut() {
+    auth.signOut();
+    endGame();
+  }
+
   return (
     <div className="App" onClick={show ? closeModal : null}>
       <Navbar
@@ -69,6 +76,8 @@ function App() {
         user={user}
         signOut={signOut}
         win={win}
+        time={time}
+        setTime={setTime}
       ></Navbar>
 
       <div className="container-fluid px-0">
@@ -94,9 +103,17 @@ function App() {
         user={user}
       ></StartModal>
 
-      <Completed win={win} signOut={signOut}></Completed>
+      <Completed
+        win={win}
+        signOut={signOut}
+        endGame={endGame}
+        time={time}
+      ></Completed>
 
-      <div className="overlay" hidden={start && !show ? true : false}></div>
+      <div
+        className="overlay"
+        hidden={start && !show && !win ? true : false}
+      ></div>
 
       <Footer></Footer>
     </div>
