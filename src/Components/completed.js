@@ -1,8 +1,4 @@
-import { useEffect } from "react";
-
 function Completed(props) {
-  useEffect(() => {});
-
   return (
     <div className={props.win ? "modal show" : "modal"} tabIndex="-1">
       <div className="modal-dialog modal-dialog-centered">
@@ -30,13 +26,6 @@ function Completed(props) {
               onClick={props.endGame}
             >
               Play Another Level
-            </button>
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={props.signOut}
-            >
-              Sign Out
             </button>
           </div>
         </div>

@@ -12,17 +12,25 @@ function Levels(props) {
         type="button"
         className="btn btn-warning mb-2"
         onClick={props.changeLevel.bind(null, 2)}
-        disabled
+        disabled={props.unlocked >= 2 ? "" : true}
       >
-        Level 2 <i className="bi bi-lock-fill"></i>
+        Level 2{" "}
+        <i
+          className="bi bi-lock-fill"
+          hidden={props.unlocked >= 2 ? true : false}
+        ></i>
       </button>
       <button
         type="button"
         className="btn btn-danger mb-2"
         onClick={props.changeLevel.bind(null, 3)}
-        disabled
+        disabled={props.unlocked >= 3 ? "" : true}
       >
-        Level 3 <i className="bi bi-lock-fill"></i>
+        Level 3{" "}
+        <i
+          className="bi bi-lock-fill"
+          hidden={props.unlocked >= 3 ? true : false}
+        ></i>
       </button>
     </div>
   );

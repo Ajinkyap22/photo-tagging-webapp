@@ -2,7 +2,6 @@ import "./App.css";
 
 // Hooks
 import { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 // Image imports
 import levelOne from "./images/level-1.jpg";
@@ -17,9 +16,6 @@ import GameImage from "./Components/gameImage";
 import Footer from "./Components/footer";
 import Completed from "./Components/completed";
 
-// firebase imports
-import { firebase, auth, firestore } from "./firebase/config";
-
 function App() {
   const [show, setShow] = useState(false);
   const [start, setStart] = useState(false);
@@ -27,8 +23,7 @@ function App() {
   const [background, setBackground] = useState(levelOne);
   const [win, setWin] = useState(false);
   const [time, setTime] = useState(0);
-
-  const [user] = useAuthState(auth);
+  const [unlocked, setUnlocked] = useState(1);
 
   function displayModal() {
     setShow(true);
@@ -62,26 +57,16 @@ function App() {
     setTime(0);
   }
 
-  function signOut() {
-    auth.signOut();
-    endGame();
-  }
-
-  function getUserData() {
-    const userName = auth.currentUser.displayName;
-  }
-
   return (
     <div className="App" onClick={show ? closeModal : null}>
       <Navbar
         start={start}
         show={show}
         displayModal={displayModal}
-        user={user}
-        signOut={signOut}
         win={win}
         time={time}
         setTime={setTime}
+        endGame={endGame}
       ></Navbar>
 
       <div className="container-fluid px-0">
@@ -89,6 +74,7 @@ function App() {
           background={background}
           level={level}
           setWin={setWin}
+          setUnlocked={setUnlocked}
         ></GameImage>
       </div>
 
@@ -104,15 +90,10 @@ function App() {
         start={start}
         changeLevel={changeLevel}
         handleStart={handleStart}
-        user={user}
+        unlocked={unlocked}
       ></StartModal>
 
-      <Completed
-        win={win}
-        signOut={signOut}
-        endGame={endGame}
-        time={time}
-      ></Completed>
+      <Completed win={win} endGame={endGame} time={time}></Completed>
 
       <div
         className="overlay"

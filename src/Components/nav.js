@@ -32,12 +32,9 @@ function Nav(props) {
                 Pokemon
               </button>
             </li>
-            <li
-              className="nav-item px-2 py-2 py-md-0"
-              hidden={props.user ? false : true}
-            >
-              <button className="btn btn-secondary" onClick={props.signOut}>
-                Sign Out
+            <li className="nav-item px-2 py-2 py-md-0">
+              <button className="btn btn-secondary" onClick={props.endGame}>
+                Back To Menu
               </button>
             </li>
           </ul>

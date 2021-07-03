@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import ContextMenu from "./contextMenu";
 import Notification from "./notification";
-import { firebase, firestore } from "../firebase/config";
+import { firestore } from "../firebase/config";
 
 function GameImage(props) {
+  // use these coords to calculate menu position
   const [xPos, setXPos] = useState(0);
   const [yPos, setYPos] = useState(0);
+  // use these coords to calculate user answer
+  const [coords, setCoords] = useState([0, 0]);
   const [showMenu, setShowMenu] = useState(false);
   const [names, setNames] = useState(["Snubbull", "Heatmor", "Shroomish"]);
   const [correct, setCorrect] = useState(false);
@@ -15,6 +18,41 @@ function GameImage(props) {
     medium: false,
     hard: false,
   });
+
+  useEffect(() => {
+    if (props.level === 1) {
+      setNames(["Snubbull", "Heatmor", "Shroomish"]);
+    }
+
+    if (props.level === 2) {
+      setNames(["Bruxish", "Kricketot", "Combee"]);
+    }
+
+    if (props.level === 3) {
+      setNames(["Charjabug", "Litwick", "Sewaddle"]);
+    }
+  }, [props.level]);
+
+  useEffect(() => {
+    if (!showToast) return;
+
+    // hide notification after 3 seconds
+    setTimeout(() => setShowToast(false), 3000);
+
+    // check for win
+    const result = Object.values(progress);
+    const won = result.every((result) => result);
+
+    if (won) {
+      props.setWin(true);
+
+      setProgress({ easy: false, medium: false, hard: false });
+
+      props.setUnlocked((level) => level + 1);
+    }
+  }, [showToast, progress, props]);
+
+  const imgRef = useRef();
 
   const hideToast = () => {
     setShowToast(false);
@@ -36,26 +74,10 @@ function GameImage(props) {
       setYPos(e.pageY);
     }
 
+    setCoords([e.pageX, e.pageY]);
+
     setShowMenu(!showMenu);
   };
-
-  useEffect(() => {
-    if (!showToast) return;
-
-    // hide notification after 3 seconds
-    setTimeout(() => setShowToast(false), 3000);
-
-    // check for win
-    const result = Object.values(progress);
-    const won = result.every((result) => result);
-
-    if (won) {
-      props.setWin(true);
-      setProgress({ easy: false, medium: false, hard: false });
-    }
-  }, [showToast, progress, props]);
-
-  const imgRef = useRef();
 
   const handleMenu = async (x, y, id) => {
     const width = imgRef.current.offsetWidth;
@@ -95,19 +117,15 @@ function GameImage(props) {
     setShowToast(true);
   };
 
-  useEffect(() => {
-    if (props.level === 1) {
-      setNames(["Snubbull", "Heatmor", "Shroomish"]);
-    }
+  // function levelComplete() {
+  //   props.setWin(true);
 
-    if (props.level === 2) {
-      setNames(["Bruxish", "Kricketot", "Combee"]);
-    }
+  //   setProgress({ easy: false, medium: false, hard: false });
 
-    if (props.level === 3) {
-      setNames(["Charjabug", "Litwick", "Sewaddle"]);
-    }
-  }, [props.level]);
+  //   props.setUnlocked((level) => level + 1);
+  //   // record time
+  //   // check best time
+  // }
 
   return (
     <div ref={imgRef}>
@@ -121,6 +139,7 @@ function GameImage(props) {
       <ContextMenu
         xPos={xPos}
         yPos={yPos}
+        coords={coords}
         showMenu={showMenu}
         names={names}
         handleMenu={handleMenu}
