@@ -58,10 +58,9 @@ function GameImage(props) {
 
       // check best time
       if (props.time > bestTime.time || bestTime.time === 0) {
-        timesRef.update({
-          time: props.time,
-          user: "user",
-        });
+        props.setBest(props.time);
+      } else {
+        props.setBest(bestTime.time);
       }
     }
 

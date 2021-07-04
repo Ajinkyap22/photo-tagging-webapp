@@ -28,6 +28,7 @@ function App() {
     2: false,
     3: false,
   });
+  const [best, setBest] = useState(0);
 
   function displayModal() {
     setShow(true);
@@ -81,6 +82,7 @@ function App() {
           setUnlocked={setUnlocked}
           unlocked={unlocked}
           time={time}
+          setBest={setBest}
         ></GameImage>
       </div>
 
@@ -99,7 +101,13 @@ function App() {
         unlocked={unlocked}
       ></StartModal>
 
-      <Completed win={win} endGame={endGame} time={time}></Completed>
+      <Completed
+        win={win}
+        endGame={endGame}
+        time={time}
+        best={best}
+        level={level}
+      ></Completed>
 
       <div
         className="overlay"
