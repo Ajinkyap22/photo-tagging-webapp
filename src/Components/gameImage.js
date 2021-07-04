@@ -43,12 +43,30 @@ function GameImage(props) {
     const result = Object.values(progress);
     const won = result.every((result) => result);
 
-    if (won) {
+    // operations to perform after completing a level
+    async function levelComplete() {
       props.setWin(true);
 
       setProgress({ easy: false, medium: false, hard: false });
 
-      props.setUnlocked((level) => level + 1);
+      // unlock next level
+      props.setUnlocked({ ...props.unlocked, [props.level + 1]: true });
+
+      // get best time
+      const timesRef = firestore.doc(`bestTimes/level-${props.level}`);
+      const bestTime = await timesRef.get().then((doc) => doc.data());
+
+      // check best time
+      if (props.time > bestTime.time || bestTime.time === 0) {
+        timesRef.update({
+          time: props.time,
+          user: "user",
+        });
+      }
+    }
+
+    if (won) {
+      levelComplete();
     }
   }, [showToast, progress, props]);
 
@@ -116,16 +134,6 @@ function GameImage(props) {
 
     setShowToast(true);
   };
-
-  // function levelComplete() {
-  //   props.setWin(true);
-
-  //   setProgress({ easy: false, medium: false, hard: false });
-
-  //   props.setUnlocked((level) => level + 1);
-  //   // record time
-  //   // check best time
-  // }
 
   return (
     <div ref={imgRef}>

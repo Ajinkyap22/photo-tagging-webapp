@@ -23,7 +23,11 @@ function App() {
   const [background, setBackground] = useState(levelOne);
   const [win, setWin] = useState(false);
   const [time, setTime] = useState(0);
-  const [unlocked, setUnlocked] = useState(1);
+  const [unlocked, setUnlocked] = useState({
+    1: true,
+    2: false,
+    3: false,
+  });
 
   function displayModal() {
     setShow(true);
@@ -75,6 +79,8 @@ function App() {
           level={level}
           setWin={setWin}
           setUnlocked={setUnlocked}
+          unlocked={unlocked}
+          time={time}
         ></GameImage>
       </div>
 
