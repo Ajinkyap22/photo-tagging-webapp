@@ -17,20 +17,36 @@ import Footer from "./Components/footer";
 import Completed from "./Components/completed";
 
 function App() {
+  // to show pokemon model
   const [show, setShow] = useState(false);
+  // to start level
   const [start, setStart] = useState(false);
+  // to get current level
   const [level, setLevel] = useState(1);
+  // to set background image
   const [background, setBackground] = useState(levelOne);
+  // to check for win
   const [win, setWin] = useState(false);
+  // to keep user's time score
   const [time, setTime] = useState(0);
+  // to check if user has unlocked the level
   const [unlocked, setUnlocked] = useState({
     1: true,
     2: false,
     3: false,
   });
+  // to keep track of how many pokemon user has found
+  const [progress, setProgress] = useState({
+    easy: false,
+    medium: false,
+    hard: false,
+  });
+  // to check for best time
   const [best, setBest] = useState(0);
+  // to set username for highscore
   const [user, setUser] = useState("");
 
+  // modal methods
   function displayModal() {
     setShow(true);
   }
@@ -39,9 +55,21 @@ function App() {
     setShow(false);
   }
 
+  // game state methods
   function handleStart() {
     setStart(true);
     displayModal();
+  }
+
+  function endGame() {
+    setStart(false);
+    setWin(false);
+    setTime(0);
+    setProgress({
+      easy: false,
+      medium: false,
+      hard: false,
+    });
   }
 
   function changeLevel(level) {
@@ -55,12 +83,6 @@ function App() {
         return levelThree;
       }
     });
-  }
-
-  function endGame() {
-    setStart(false);
-    setWin(false);
-    setTime(0);
   }
 
   return (
@@ -85,16 +107,12 @@ function App() {
           time={time}
           setBest={setBest}
           setUser={setUser}
+          progress={progress}
+          setProgress={setProgress}
         ></GameImage>
       </div>
 
-      <Modal
-        closeModal={closeModal}
-        handleStart={handleStart}
-        show={show}
-        start={start}
-        level={level}
-      ></Modal>
+      <Modal show={show} start={start} level={level}></Modal>
 
       <StartModal
         start={start}

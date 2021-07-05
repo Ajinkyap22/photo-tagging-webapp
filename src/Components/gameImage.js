@@ -1,4 +1,6 @@
+// react imports
 import { useEffect, useRef, useState } from "react";
+// component imports
 import ContextMenu from "./contextMenu";
 import Notification from "./notification";
 import { firestore } from "../firebase/config";
@@ -9,16 +11,46 @@ function GameImage(props) {
   const [yPos, setYPos] = useState(0);
   // use these coords to calculate user answer
   const [coords, setCoords] = useState([0, 0]);
+  // to show context menu
   const [showMenu, setShowMenu] = useState(false);
+  // to set pokemon names for eacg level
   const [names, setNames] = useState(["Snubbull", "Heatmor", "Shroomish"]);
+  // to check if guess is correct
   const [correct, setCorrect] = useState(false);
+  // to show notification toast
   const [showToast, setShowToast] = useState(false);
-  const [progress, setProgress] = useState({
-    easy: false,
-    medium: false,
-    hard: false,
-  });
+  // to keep track of how many pokemon user has found
 
+  const imgRef = useRef();
+
+  // for hiding notification toast
+  const hideToast = () => {
+    setShowToast(false);
+  };
+
+  // for handling image click
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    // To prevent the menu from going outside the screen width/height
+    if (imgRef.current.offsetWidth - e.pageX < 144) {
+      setXPos(e.pageX - 144);
+    } else {
+      setXPos(e.pageX);
+    }
+
+    if (imgRef.current.offsetHeight - e.pageY < 143) {
+      setYPos(e.pageY - 143);
+    } else {
+      setYPos(e.pageY);
+    }
+
+    setCoords([e.pageX, e.pageY]);
+
+    setShowMenu(!showMenu);
+  };
+
+  // for setting pokemon names for each level
   useEffect(() => {
     if (props.level === 1) {
       setNames(["Snubbull", "Heatmor", "Shroomish"]);
@@ -33,19 +65,24 @@ function GameImage(props) {
     }
   }, [props.level]);
 
+  // for hiding notification after 3 seconds
   useEffect(() => {
     if (!showToast) return;
 
     // hide notification after 3 seconds
     setTimeout(() => setShowToast(false), 3000);
+  }, [showToast]);
 
+  // for winning scenarios
+  useEffect(() => {
     // check for win
-    const result = Object.values(progress);
+    const result = Object.values(props.progress);
     const won = result.every((result) => result);
 
     // operations to perform after completing a level
     async function levelComplete() {
-      setProgress({ easy: false, medium: false, hard: false });
+      // set progress back to initial state
+      props.setProgress({ easy: false, medium: false, hard: false });
 
       // unlock next level
       props.setUnlocked({ ...props.unlocked, [props.level + 1]: true });
@@ -68,49 +105,26 @@ function GameImage(props) {
     if (won) {
       levelComplete();
     }
-  }, [showToast, progress, props]);
+  }, [props]);
 
-  const imgRef = useRef();
-
-  const hideToast = () => {
-    setShowToast(false);
-  };
-
-  const handleClick = (e) => {
-    e.preventDefault();
-
-    // To prevent the menu from going outside the screen width/height
-    if (imgRef.current.offsetWidth - e.pageX < 144) {
-      setXPos(e.pageX - 144);
-    } else {
-      setXPos(e.pageX);
-    }
-
-    if (imgRef.current.offsetHeight - e.pageY < 143) {
-      setYPos(e.pageY - 143);
-    } else {
-      setYPos(e.pageY);
-    }
-
-    setCoords([e.pageX, e.pageY]);
-
-    setShowMenu(!showMenu);
-  };
-
+  // for handling menu click
   const handleMenu = async (x, y, id) => {
+    // get width & height of image
     const width = imgRef.current.offsetWidth;
     const height = imgRef.current.offsetHeight;
+    // navbar height to subtract
     const navHeight = +document.querySelector(".navbar").clientHeight;
 
     // Find relative coords to work for all screens
     const relX = x / width;
     const relY = (y - navHeight) / height;
 
-    const path = `answers/level-${props.level}`;
-
     // get coords from firestore
-    const answersRef = firestore.doc(path);
-    const coords = await answersRef.get().then((doc) => doc.data());
+    const path = `answers/level-${props.level}`;
+    const coords = await firestore
+      .doc(path)
+      .get()
+      .then((doc) => doc.data());
 
     // Check if there's any relX coord matching user selected relX coord
     const userX = Math.abs(relX - coords[id].relX) < 0.02;
@@ -118,14 +132,16 @@ function GameImage(props) {
     // Check if there's any relY coord matching user selected relX coord
     const userY = Math.abs(relY - coords[id].relY) < 0.02;
 
+    // hide context menu after clicking
     setShowMenu(false);
 
+    // check for correct answer
     if (userX && userY) {
       setCorrect(true);
 
       // remove the found pokemon from context menu
-      setProgress({
-        ...progress,
+      props.setProgress({
+        ...props.progress,
         [id]: true,
       });
     } else {
@@ -151,7 +167,7 @@ function GameImage(props) {
         showMenu={showMenu}
         names={names}
         handleMenu={handleMenu}
-        progress={progress}
+        progress={props.progress}
       ></ContextMenu>
 
       <Notification

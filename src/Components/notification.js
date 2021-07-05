@@ -19,6 +19,7 @@ function Notification(props) {
               ? "Gotcha! You found a Pokemon."
               : "Wrong! Keep Looking."}
           </div>
+
           <button
             type="button"
             className="btn-close btn-close-white me-2 m-auto"

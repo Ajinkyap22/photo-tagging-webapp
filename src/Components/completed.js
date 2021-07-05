@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { firestore } from "../firebase/config";
 
 function Completed(props) {
+  // to set user's name from input
   const [userName, setUserName] = useState("");
+  // to show record saved notification
   const [notify, setNotify] = useState(false);
 
   function handleUserName(e) {
@@ -13,6 +15,7 @@ function Completed(props) {
     setNotify(false);
   }
 
+  // save record in db
   function saveUserName(e) {
     e.preventDefault();
 
@@ -25,9 +28,11 @@ function Completed(props) {
 
     setNotify(true);
 
+    // clear input field
     document.querySelector("#username").value = "";
   }
 
+  // to hide notification after 3 secnods
   useEffect(() => {
     if (!notify) return;
 
@@ -41,6 +46,7 @@ function Completed(props) {
           <div className="modal-header">
             <h5 className="modal-title">Congratulations! Level Completed.</h5>
           </div>
+
           <div className="modal-body">
             <p className="lead">
               Your Time:
@@ -54,6 +60,7 @@ function Completed(props) {
                 .toString()
                 .padStart(2, "0")}`}</span>
             </p>
+
             <p className="text-success">
               {props.best >= props.time
                 ? "You just created a new time record!"
@@ -65,6 +72,7 @@ function Completed(props) {
                     .toString()
                     .padStart(2, "0")} - ${props.user}`}
             </p>
+
             <form
               onSubmit={saveUserName}
               hidden={props.best >= props.time ? false : true}
@@ -73,6 +81,7 @@ function Completed(props) {
                 <label htmlFor="username" className="form-label fw-bold">
                   Enter Your Username To Save Your Record
                 </label>
+
                 <input
                   type="text"
                   className="form-control w-50 m-auto"
@@ -82,6 +91,7 @@ function Completed(props) {
                   maxLength="25"
                   onChange={handleUserName}
                 />
+
                 <button
                   type="submit"
                   className="btn btn-primary mt-3"
@@ -91,6 +101,7 @@ function Completed(props) {
                 </button>
               </div>
             </form>
+
             <div
               className="position-fixed bottom-0 m-5 end-0"
               style={{ maxWidth: "300px" }}
@@ -106,6 +117,7 @@ function Completed(props) {
                   <div className="toast-body text-center flex-grow-1">
                     Your record has been saved
                   </div>
+
                   <button
                     type="button"
                     className="btn-close me-2 m-auto"
@@ -117,6 +129,7 @@ function Completed(props) {
               </div>
             </div>
           </div>
+
           <div className="modal-footer">
             <button
               type="button"

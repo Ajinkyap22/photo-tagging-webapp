@@ -8,6 +8,7 @@ function Levels(props) {
       >
         Level 1
       </button>
+
       <button
         type="button"
         className="btn btn-warning mb-2"
@@ -20,6 +21,7 @@ function Levels(props) {
           hidden={props.unlocked["2"] ? true : false}
         ></i>
       </button>
+
       <button
         type="button"
         className="btn btn-danger mb-2"

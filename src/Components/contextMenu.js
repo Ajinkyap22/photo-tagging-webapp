@@ -23,6 +23,7 @@ function ContextMenu(props) {
       >
         {props.names[0]}
       </button>
+
       <button
         type="button"
         className="btn btn-dark"
@@ -36,6 +37,7 @@ function ContextMenu(props) {
       >
         {props.names[1]}
       </button>
+
       <button
         type="button"
         className="btn btn-dark"

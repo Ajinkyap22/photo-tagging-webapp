@@ -8,12 +8,14 @@ function StartModal(props) {
           <div className="modal-header">
             <h5 className="modal-title">Select a Level</h5>
           </div>
+
           <div className="modal-body">
             <Levels
               changeLevel={props.changeLevel}
               unlocked={props.unlocked}
             ></Levels>
           </div>
+
           <div className="modal-footer">
             <button
               type="button"
