@@ -4,7 +4,7 @@ function Timer(props) {
   useEffect(() => {
     let interval;
 
-    if (props.start && !props.win) {
+    if (props.start && !props.win && !props.show) {
       interval = setInterval(() => {
         props.setTime((time) => time + 1);
       }, 1000);

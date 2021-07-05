@@ -45,8 +45,6 @@ function GameImage(props) {
 
     // operations to perform after completing a level
     async function levelComplete() {
-      props.setWin(true);
-
       setProgress({ easy: false, medium: false, hard: false });
 
       // unlock next level
@@ -57,11 +55,14 @@ function GameImage(props) {
       const bestTime = await timesRef.get().then((doc) => doc.data());
 
       // check best time
-      if (props.time > bestTime.time || bestTime.time === 0) {
+      if (props.time < bestTime.time || bestTime.time === 0) {
         props.setBest(props.time);
       } else {
         props.setBest(bestTime.time);
+        props.setUser(bestTime.user);
       }
+
+      props.setWin(true);
     }
 
     if (won) {

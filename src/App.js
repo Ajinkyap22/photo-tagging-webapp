@@ -29,6 +29,7 @@ function App() {
     3: false,
   });
   const [best, setBest] = useState(0);
+  const [user, setUser] = useState("");
 
   function displayModal() {
     setShow(true);
@@ -83,6 +84,7 @@ function App() {
           unlocked={unlocked}
           time={time}
           setBest={setBest}
+          setUser={setUser}
         ></GameImage>
       </div>
 
@@ -107,6 +109,7 @@ function App() {
         time={time}
         best={best}
         level={level}
+        user={user}
       ></Completed>
 
       <div

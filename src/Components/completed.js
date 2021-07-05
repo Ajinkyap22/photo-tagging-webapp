@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { firestore } from "../firebase/config";
 
 function Completed(props) {
   const [userName, setUserName] = useState("");
+  const [notify, setNotify] = useState(false);
 
   function handleUserName(e) {
     setUserName(e.target.value);
+  }
+
+  function handleNotify() {
+    setNotify(false);
   }
 
   function saveUserName(e) {
@@ -17,7 +22,18 @@ function Completed(props) {
       time: props.time,
       user: userName,
     });
+
+    setNotify(true);
+
+    document.querySelector("#username").value = "";
   }
+
+  useEffect(() => {
+    if (!notify) return;
+
+    setTimeout(() => setNotify(false), 3000);
+  });
+
   return (
     <div className={props.win ? "modal show" : "modal"} tabIndex="-1">
       <div className="modal-dialog modal-dialog-centered">
@@ -38,18 +54,21 @@ function Completed(props) {
                 .toString()
                 .padStart(2, "0")}`}</span>
             </p>
-            <p className={props.best ? "text-success" : ""}>
-              {props.best
+            <p className="text-success">
+              {props.best >= props.time
                 ? "You just created a new time record!"
-                : `Best Time: ${Math.floor((props.time / 3600) % 60)
+                : `Best Time: ${Math.floor((props.best / 3600) % 60)
                     .toString()
-                    .padStart(2, "0")}:${Math.floor((props.time / 60) % 60)
+                    .padStart(2, "0")}:${Math.floor((props.best / 60) % 60)
                     .toString()
-                    .padStart(2, "0")}:${Math.floor(props.time % 60)
+                    .padStart(2, "0")}:${Math.floor(props.best % 60)
                     .toString()
-                    .padStart(2, "0")}`}
+                    .padStart(2, "0")} - ${props.user}`}
             </p>
-            <form onSubmit={saveUserName}>
+            <form
+              onSubmit={saveUserName}
+              hidden={props.best >= props.time ? false : true}
+            >
               <div className="my-2">
                 <label htmlFor="username" className="form-label fw-bold">
                   Enter Your Username To Save Your Record
@@ -63,11 +82,40 @@ function Completed(props) {
                   maxLength="25"
                   onChange={handleUserName}
                 />
-                <button type="submit" className="btn btn-primary mt-3">
+                <button
+                  type="submit"
+                  className="btn btn-primary mt-3"
+                  id="liveToastBtn"
+                >
                   Save
                 </button>
               </div>
             </form>
+            <div
+              className="position-fixed bottom-0 m-5 end-0"
+              style={{ maxWidth: "300px" }}
+            >
+              <div
+                className="toast show align-items-center border-0 bg-primary text-light"
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true"
+                hidden={notify ? false : true}
+              >
+                <div className="d-flex">
+                  <div className="toast-body text-center flex-grow-1">
+                    Your record has been saved
+                  </div>
+                  <button
+                    type="button"
+                    className="btn-close me-2 m-auto"
+                    data-bs-dismiss="toast"
+                    aria-label="Close"
+                    onClick={handleNotify}
+                  ></button>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="modal-footer">
             <button
