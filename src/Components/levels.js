@@ -3,7 +3,7 @@ function Levels(props) {
     <div className="btn-group-vertical w-100">
       <button
         type="button"
-        className="btn btn-success mb-2"
+        className="btn btn-success bg-gradient mb-2"
         onClick={props.changeLevel.bind(null, 1)}
       >
         Level 1
@@ -11,7 +11,7 @@ function Levels(props) {
 
       <button
         type="button"
-        className="btn btn-warning mb-2"
+        className="btn btn-warning bg-gradient mb-2"
         onClick={props.changeLevel.bind(null, 2)}
         disabled={props.unlocked["2"] ? "" : true}
       >
@@ -24,7 +24,7 @@ function Levels(props) {
 
       <button
         type="button"
-        className="btn btn-danger mb-2"
+        className="btn btn-danger bg-gradient mb-2"
         onClick={props.changeLevel.bind(null, 3)}
         disabled={props.unlocked["3"] ? "" : true}
       >

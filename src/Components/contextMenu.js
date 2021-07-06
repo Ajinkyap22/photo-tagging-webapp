@@ -12,7 +12,7 @@ function ContextMenu(props) {
     >
       <button
         type="button"
-        className="btn btn-dark"
+        className="btn btn-dark border border-secondary rounded"
         onClick={props.handleMenu.bind(
           this,
           props.coords[0],
@@ -26,7 +26,7 @@ function ContextMenu(props) {
 
       <button
         type="button"
-        className="btn btn-dark"
+        className="btn btn-dark border border-secondary rounded"
         onClick={props.handleMenu.bind(
           this,
           props.coords[0],
@@ -40,7 +40,7 @@ function ContextMenu(props) {
 
       <button
         type="button"
-        className="btn btn-dark"
+        className="btn btn-dark border border-secondary rounded"
         onClick={props.handleMenu.bind(
           this,
           props.coords[0],

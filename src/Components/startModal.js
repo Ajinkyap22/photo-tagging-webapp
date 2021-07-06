@@ -4,7 +4,7 @@ function StartModal(props) {
   return (
     <div className={props.start ? "modal" : "modal show"} tabIndex="-1">
       <div className="modal-dialog modal-dialog-centered">
-        <div className="modal-content">
+        <div className="modal-content bg-light bg-gradient">
           <div className="modal-header">
             <h5 className="modal-title">Select a Level</h5>
           </div>

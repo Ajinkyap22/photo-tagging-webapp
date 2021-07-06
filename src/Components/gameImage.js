@@ -158,6 +158,7 @@ function GameImage(props) {
         alt=""
         className="img-fluid w-100"
         onClick={handleClick}
+        style={{ objectFit: "cover" }}
       />
 
       <ContextMenu
