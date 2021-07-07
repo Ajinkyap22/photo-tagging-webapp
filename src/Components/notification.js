@@ -5,7 +5,7 @@ function Notification(props) {
       style={{ top: "15%", maxWidth: "300px" }}
     >
       <div
-        className={`toast show align-items-center text-white border-0 ${
+        className={`notification align-items-center text-white border-0 ${
           props.correct ? "bg-success" : "bg-danger"
         }`}
         role="alert"
@@ -14,7 +14,10 @@ function Notification(props) {
         hidden={props.showToast ? false : true}
       >
         <div className="d-flex">
-          <div className="toast-body text-center flex-grow-1">
+          <div
+            className="text-center flex-grow-1"
+            style={{ padding: ".75rem" }}
+          >
             {props.correct
               ? "Gotcha! You found a Pokemon."
               : "Wrong! Keep Looking."}
@@ -23,7 +26,6 @@ function Notification(props) {
           <button
             type="button"
             className="btn-close btn-close-white me-2 m-auto"
-            data-bs-dismiss="toast"
             aria-label="Close"
             onClick={props.hideToast}
           ></button>

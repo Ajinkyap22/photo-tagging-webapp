@@ -38,3 +38,13 @@
 .link-danger:active {
   text-decoration: none !important;
 }
+
+.notification {
+  width: 350px;
+  max-width: 100%;
+  font-size: 0.875rem;
+  pointer-events: auto;
+  background-clip: padding-box;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+  border-radius: 0.25rem;
+}

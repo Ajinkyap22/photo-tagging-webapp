@@ -92,11 +92,7 @@ function Completed(props) {
                   onChange={handleUserName}
                 />
 
-                <button
-                  type="submit"
-                  className="btn btn-primary mt-3"
-                  id="liveToastBtn"
-                >
+                <button type="submit" className="btn btn-primary mt-3">
                   Save
                 </button>
               </div>
@@ -107,21 +103,23 @@ function Completed(props) {
               style={{ maxWidth: "300px" }}
             >
               <div
-                className="toast show align-items-center border-0 bg-primary text-light"
+                className="notification align-items-center border-0 bg-primary text-light"
                 role="alert"
                 aria-live="assertive"
                 aria-atomic="true"
                 hidden={notify ? false : true}
               >
                 <div className="d-flex">
-                  <div className="toast-body text-center flex-grow-1">
+                  <div
+                    className="text-center flex-grow-1"
+                    style={{ padding: ".75rem" }}
+                  >
                     Your record has been saved
                   </div>
 
                   <button
                     type="button"
                     className="btn-close me-2 m-auto"
-                    data-bs-dismiss="toast"
                     aria-label="Close"
                     onClick={handleNotify}
                   ></button>
