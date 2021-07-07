@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/photo-tagging-webapp/static/css/main.690c2c15.chunk.css",
+    "main.js": "/photo-tagging-webapp/static/js/main.4c6aaa63.chunk.js",
+    "main.js.map": "/photo-tagging-webapp/static/js/main.4c6aaa63.chunk.js.map",
+    "runtime-main.js": "/photo-tagging-webapp/static/js/runtime-main.5da05e22.js",
+    "runtime-main.js.map": "/photo-tagging-webapp/static/js/runtime-main.5da05e22.js.map",
+    "static/css/2.d45d6843.chunk.css": "/photo-tagging-webapp/static/css/2.d45d6843.chunk.css",
+    "static/js/2.4b23fa0f.chunk.js": "/photo-tagging-webapp/static/js/2.4b23fa0f.chunk.js",
+    "static/js/2.4b23fa0f.chunk.js.map": "/photo-tagging-webapp/static/js/2.4b23fa0f.chunk.js.map",
+    "index.html": "/photo-tagging-webapp/index.html",
+    "static/css/2.d45d6843.chunk.css.map": "/photo-tagging-webapp/static/css/2.d45d6843.chunk.css.map",
+    "static/css/main.690c2c15.chunk.css.map": "/photo-tagging-webapp/static/css/main.690c2c15.chunk.css.map",
+    "static/js/2.4b23fa0f.chunk.js.LICENSE.txt": "/photo-tagging-webapp/static/js/2.4b23fa0f.chunk.js.LICENSE.txt",
+    "static/media/bruxish.de05a0cc.png": "/photo-tagging-webapp/static/media/bruxish.de05a0cc.png",
+    "static/media/charjabug.fd0540f5.png": "/photo-tagging-webapp/static/media/charjabug.fd0540f5.png",
+    "static/media/combee.0206ed94.png": "/photo-tagging-webapp/static/media/combee.0206ed94.png",
+    "static/media/App.css": "/photo-tagging-webapp/static/media/custom-cursor.a1125529.svg",
+    "static/media/heatmor.b7619b4e.png": "/photo-tagging-webapp/static/media/heatmor.b7619b4e.png",
+    "static/media/kricketot.8a515d82.png": "/photo-tagging-webapp/static/media/kricketot.8a515d82.png",
+    "static/media/level-1.6f474ce0.jpg": "/photo-tagging-webapp/static/media/level-1.6f474ce0.jpg",
+    "static/media/level-2.fd52eae7.jpg": "/photo-tagging-webapp/static/media/level-2.fd52eae7.jpg",
+    "static/media/level-3.4d619032.jpg": "/photo-tagging-webapp/static/media/level-3.4d619032.jpg",
+    "static/media/litwick.39e28951.png": "/photo-tagging-webapp/static/media/litwick.39e28951.png",
+    "static/media/sewaddle.ccc5bcd8.png": "/photo-tagging-webapp/static/media/sewaddle.ccc5bcd8.png",
+    "static/media/shroomish.c1c46d5d.png": "/photo-tagging-webapp/static/media/shroomish.c1c46d5d.png",
+    "static/media/snubbull.52b30ae4.png": "/photo-tagging-webapp/static/media/snubbull.52b30ae4.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5da05e22.js",
+    "static/css/2.d45d6843.chunk.css",
+    "static/js/2.4b23fa0f.chunk.js",
+    "static/css/main.690c2c15.chunk.css",
+    "static/js/main.4c6aaa63.chunk.js"
+  ]
+}
