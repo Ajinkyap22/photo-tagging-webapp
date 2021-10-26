@@ -1,11 +1,17 @@
 import "bootstrap/js/src/collapse.js";
 import Timer from "./timer";
+import Logo from "../images/pokeball.svg";
 
 function Nav(props) {
   return (
     <nav className="navbar navbar-expand-md bg-dark navbar-dark py-3 fixed-top">
       <div className="container">
-        <h2 className="navbar-brand">Where's That Pokemon?</h2>
+        <div className="navbar-brand">
+          <h5>
+            <img src={Logo} className="logo pb-1 mx-1" alt="log" /> Where's That
+            Pokemon?
+          </h5>
+        </div>
 
         <button
           className="navbar-toggler"
