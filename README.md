@@ -33,7 +33,7 @@
 
 ## Features
 
-- 3 Seperate Levels
+- 3 Separate Levels
 - In each level you have to find 3 pokemon to win
 - Your time is recorded to save the best time
 - Responsive
