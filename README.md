@@ -19,25 +19,25 @@
 ## Screenshots
 
 <kbd>
-  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20thumbnails/Photo%20Tagging.jpg?raw=true" width="600" alt="Feed"  />
+  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20thumbnails/Photo%20Tagging.jpg?raw=true" width="600" alt="Levels"  />
 </kbd>
 
 <hr/>
 
 <kbd>
-  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20screenshots/Where's%20that%20Pokemon/1.png?raw=true" width="600" alt="Feed"  />
+  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20screenshots/Where's%20that%20Pokemon/1.png?raw=true" width="600" alt="Objective"  />
 </kbd>
 
 <hr/>
 
 <kbd>
-  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20screenshots/Where's%20that%20Pokemon/2.png?raw=true" width="600" alt="Feed"  />
+  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20screenshots/Where's%20that%20Pokemon/2.png?raw=true" width="600" alt="Gameplay"  />
 </kbd>
 
 <hr/>
 
 <kbd>
-  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20screenshots/Where's%20that%20Pokemon/3.png?raw=true" width="600" alt="Feed"  />
+  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20screenshots/Where's%20that%20Pokemon/3.png?raw=true" width="600" alt="Game Over"  />
 </kbd>
 
 <hr/>
