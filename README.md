@@ -5,15 +5,42 @@
 ## Table of contents
 
 - [Live Demo](#live-demo)
+- [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Setup](#setup)
 - [Features](#features)
 - [Status](#status)
 - [Contact](#contact)
 
-## Preview Link
+## Live Demo
 
 [Where's That Pokemon](https://where-s-that-pokemon.web.app/)
+
+## Screenshots
+
+<kbd>
+  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20thumbnails/Photo%20Tagging.jpg?raw=true" width="600" alt="Feed"  />
+</kbd>
+
+<hr/>
+
+<kbd>
+  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20screenshots/Where's%20that%20Pokemon/1.png?raw=true" width="600" alt="Feed"  />
+</kbd>
+
+<hr/>
+
+<kbd>
+  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20screenshots/Where's%20that%20Pokemon/2.png?raw=true" width="600" alt="Feed"  />
+</kbd>
+
+<hr/>
+
+<kbd>
+  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20screenshots/Where's%20that%20Pokemon/3.png?raw=true" width="600" alt="Feed"  />
+</kbd>
+
+<hr/>
 
 ## Technologies
 
